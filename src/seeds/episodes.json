@@ -6,11 +6,11 @@
       "air_date": "December 2, 2013",
       "episodeCode": "S01E01",
       "characters": [
-        "${process.env.API_DOMAIN}/api/character/1",
-        "${process.env.API_DOMAIN}/api/character/2",
-        "${process.env.API_DOMAIN}/api/character/3",
-        "${process.env.API_DOMAIN}/api/character/4",
-        "${process.env.API_DOMAIN}/api/character/5"
+        "${process.env.API_DOMAIN}/api/characters/1",
+        "${process.env.API_DOMAIN}/api/characters/2",
+        "${process.env.API_DOMAIN}/api/characters/3",
+        "${process.env.API_DOMAIN}/api/characters/4",
+        "${process.env.API_DOMAIN}/api/characters/5"
       ],
       "url": "${process.env.API_DOMAIN}/api/episodes/1",
       "created": "2017-11-10T12:56:33.798Z"
@@ -21,8 +21,8 @@
       "air_date": "December 9, 2013",
       "episodeCode": "S01E02",
       "characters": [
-        "${process.env.API_DOMAIN}/api/character/1",
-        "${process.env.API_DOMAIN}/api/character/2"
+        "${process.env.API_DOMAIN}/api/characters/1",
+        "${process.env.API_DOMAIN}/api/characters/2"
       ],
       "url": "${process.env.API_DOMAIN}/api/episodes/2",
       "created": "2017-11-10T12:56:33.916Z"
@@ -33,10 +33,10 @@
       "air_date": "December 16, 2013",
       "episodeCode": "S01E03",
       "characters": [
-        "${process.env.API_DOMAIN}/api/character/1",
-        "${process.env.API_DOMAIN}/api/character/2",
-        "${process.env.API_DOMAIN}/api/character/3",
-        "${process.env.API_DOMAIN}/api/character/5"
+        "${process.env.API_DOMAIN}/api/characters/1",
+        "${process.env.API_DOMAIN}/api/characters/2",
+        "${process.env.API_DOMAIN}/api/characters/3",
+        "${process.env.API_DOMAIN}/api/characters/5"
       ],
       "url": "${process.env.API_DOMAIN}/api/episodes/3",
       "created": "2017-11-10T12:56:34.022Z"
@@ -47,9 +47,9 @@
       "air_date": "January 13, 2014",
       "episodeCode": "S01E04",
       "characters": [
-        "${process.env.API_DOMAIN}/api/character/1",
-        "${process.env.API_DOMAIN}/api/character/2",
-        "${process.env.API_DOMAIN}/api/character/4"
+        "${process.env.API_DOMAIN}/api/characters/1",
+        "${process.env.API_DOMAIN}/api/characters/2",
+        "${process.env.API_DOMAIN}/api/characters/4"
       ],
       "url": "${process.env.API_DOMAIN}/api/episodes/4",
       "created": "2017-11-10T12:56:34.129Z"
@@ -60,9 +60,9 @@
       "air_date": "January 20, 2014",
       "episodeCode": "S01E05",
       "characters": [
-        "${process.env.API_DOMAIN}/api/character/1",
-        "${process.env.API_DOMAIN}/api/character/2",
-        "${process.env.API_DOMAIN}/api/character/3"
+        "${process.env.API_DOMAIN}/api/characters/1",
+        "${process.env.API_DOMAIN}/api/characters/2",
+        "${process.env.API_DOMAIN}/api/characters/3"
       ],
       "url": "${process.env.API_DOMAIN}/api/episodes/5",
       "created": "2017-11-10T12:56:34.236Z"

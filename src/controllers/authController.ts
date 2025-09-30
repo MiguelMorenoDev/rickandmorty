@@ -53,7 +53,7 @@ export const verifyToken = async (
         const decoded = jwt.verify(token, JWT_SECRET) as any;
         
         // Optionally get fresh user data
-        const user = await UserModel.findById(decoded.id).select('-password');
+        const user = await UserModel.findOne({ id: decoded.id }).select('-password');
         if (!user) {
             return res.status(401).json({ 
                 success: false, 

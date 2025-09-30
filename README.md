@@ -39,7 +39,7 @@ npm run dev
 
 ## API Documentation 📖
 
-**🔗 [Live Swagger Docs](http://localhost:3000/api/api-docs)**
+**🔗 [Live Swagger Docs](https://rickandmorty-w440.onrender.com/api/api-docs)**
 
 ### Endpoints:
 - 👥 **Auth**: `/api/auth` - Register/Login

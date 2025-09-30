@@ -50,7 +50,7 @@ npm run dev
 
 ## Live Demo 🌐
 
-**[Live Demo](https://rickandmorty-w440.onrender.com)**
+**[Live Demo](https://rickandmorty-w440.onrender.com)**: Initial response may take up to 60 seconds as the server wakes up from sleep
 
 ## Tech Stack 🛠️
 

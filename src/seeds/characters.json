@@ -10,7 +10,7 @@
       "origin": {"name": "Earth (C-137)", "url": "${process.env.API_DOMAIN}/api/location/1"},
       "location": {"name": "Earth (C-137)", "url": "${process.env.API_DOMAIN}/api/location/1"},
       "image": "${process.env.API_DOMAIN}/images/1.jpeg",
-      "episode": ["${process.env.API_DOMAIN}/api/episode/1", "${process.env.API_DOMAIN}/api/episode/2", "${process.env.API_DOMAIN}/api/episode/3", "${process.env.API_DOMAIN}/api/episode/4", "${process.env.API_DOMAIN}/api/episode/5"],
+      "episode": ["${process.env.API_DOMAIN}/api/episodes/1", "${process.env.API_DOMAIN}/api/episodes/2", "${process.env.API_DOMAIN}/api/episodes/3", "${process.env.API_DOMAIN}/api/episode/4", "${process.env.API_DOMAIN}/api/episode/5"],
       "url": "${process.env.API_DOMAIN}/api/character/1",
       "created": "2017-11-04T18:48:46.250Z"
     },
@@ -25,7 +25,7 @@
       "location": {"name": "Citadel of Ricks", "url": "${process.env.API_DOMAIN}/api/location/2"},
       "image": "${process.env.API_DOMAIN}/images/2.jpeg",
 
-      "episode": ["${process.env.API_DOMAIN}/api/episode/1", "${process.env.API_DOMAIN}/api/episode/2", "${process.env.API_DOMAIN}/api/episode/3"],
+      "episode": ["${process.env.API_DOMAIN}/api/episodes/1", "${process.env.API_DOMAIN}/api/episodes/2", "${process.env.API_DOMAIN}/api/episodes/3"],
       "url": "${process.env.API_DOMAIN}/api/character/2",
       "created": "2017-11-04T18:50:21.651Z"
     },
@@ -39,7 +39,7 @@
       "origin": {"name": "Anatomy Park", "url": "${process.env.API_DOMAIN}/api/location/3"},
       "location": {"name": "Anatomy Park", "url": "${process.env.API_DOMAIN}/api/location/3"},
       "image": "${process.env.API_DOMAIN}/images/3.jpeg",
-      "episode": ["${process.env.API_DOMAIN}/api/episode/1", "${process.env.API_DOMAIN}/api/episode/3", "${process.env.API_DOMAIN}/api/episode/5"],
+      "episode": ["${process.env.API_DOMAIN}/api/episodes/1", "${process.env.API_DOMAIN}/api/episodes/3", "${process.env.API_DOMAIN}/api/episodes/5"],
       "url": "${process.env.API_DOMAIN}/api/character/3",
       "created": "2017-11-04T19:09:56.428Z"
     },
@@ -53,7 +53,7 @@
       "origin": {"name": "Interdimensional Cable", "url": "${process.env.API_DOMAIN}/api/location/4"},
       "location": {"name": "Interdimensional Cable", "url": "${process.env.API_DOMAIN}/api/location/4"},
       "image": "${process.env.API_DOMAIN}/images/4.jpeg",      
-      "episode": ["${process.env.API_DOMAIN}/api/episode/1", "${process.env.API_DOMAIN}/api/episode/4"],
+      "episode": ["${process.env.API_DOMAIN}/api/episodes/1", "${process.env.API_DOMAIN}/api/episodes/4"],
       "url": "${process.env.API_DOMAIN}/api/character/4",
       "created": "2017-11-04T19:22:43.665Z"
     },
@@ -67,7 +67,7 @@
       "origin": {"name": "Jerry's Mind", "url": "${process.env.API_DOMAIN}/api/location/5"},
       "location": {"name": "Jerry's Mind", "url": "${process.env.API_DOMAIN}/api/location/5"},
       "image": "${process.env.API_DOMAIN}/images/5.jpeg",  
-      "episode": ["${process.env.API_DOMAIN}/api/episode/1", "${process.env.API_DOMAIN}/api/episode/3"],
+      "episode": ["${process.env.API_DOMAIN}/api/episodes/1", "${process.env.API_DOMAIN}/api/episodes/3"],
       "url": "${process.env.API_DOMAIN}/api/character/5",
       "created": "2017-11-04T19:26:56.301Z"
     }

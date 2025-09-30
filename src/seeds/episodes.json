@@ -12,7 +12,7 @@
         "${process.env.API_DOMAIN}/api/character/4",
         "${process.env.API_DOMAIN}/api/character/5"
       ],
-      "url": "${process.env.API_DOMAIN}/api/episode/1",
+      "url": "${process.env.API_DOMAIN}/api/episodes/1",
       "created": "2017-11-10T12:56:33.798Z"
     },
     {
@@ -24,7 +24,7 @@
         "${process.env.API_DOMAIN}/api/character/1",
         "${process.env.API_DOMAIN}/api/character/2"
       ],
-      "url": "${process.env.API_DOMAIN}/api/episode/2",
+      "url": "${process.env.API_DOMAIN}/api/episodes/2",
       "created": "2017-11-10T12:56:33.916Z"
     },
     {
@@ -38,7 +38,7 @@
         "${process.env.API_DOMAIN}/api/character/3",
         "${process.env.API_DOMAIN}/api/character/5"
       ],
-      "url": "${process.env.API_DOMAIN}/api/episode/3",
+      "url": "${process.env.API_DOMAIN}/api/episodes/3",
       "created": "2017-11-10T12:56:34.022Z"
     },
     {
@@ -51,7 +51,7 @@
         "${process.env.API_DOMAIN}/api/character/2",
         "${process.env.API_DOMAIN}/api/character/4"
       ],
-      "url": "${process.env.API_DOMAIN}/api/episode/4",
+      "url": "${process.env.API_DOMAIN}/api/episodes/4",
       "created": "2017-11-10T12:56:34.129Z"
     },
     {
@@ -64,7 +64,7 @@
         "${process.env.API_DOMAIN}/api/character/2",
         "${process.env.API_DOMAIN}/api/character/3"
       ],
-      "url": "${process.env.API_DOMAIN}/api/episode/5",
+      "url": "${process.env.API_DOMAIN}/api/episodes/5",
       "created": "2017-11-10T12:56:34.236Z"
     }
   ]

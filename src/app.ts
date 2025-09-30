@@ -13,6 +13,7 @@ import episodeSwagger from './docs/episode.swagger.json';
 import locationSwagger from './docs/location.swagger.json';
 import userSwagger from './docs/user.swagger.json';
 import authSwagger from './docs/auth.swagger.json';
+import cors from 'cors';
 
 const app = express();
 
@@ -89,6 +90,7 @@ async function main() {
   }
 
   // Middleware
+  app.use(cors());
   app.use(express.json());
 
   // API routes

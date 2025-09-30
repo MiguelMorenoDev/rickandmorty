@@ -5,4 +5,5 @@ node_modules/
 .env
 
 # Database files
-mongo/
+mongo/data
+*lock

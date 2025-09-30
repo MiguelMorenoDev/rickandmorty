@@ -31,10 +31,6 @@ const swaggerDocument = {
   },
   servers: [
     {
-      url: `http://localhost:${envs.PORT}`,
-      description: 'Development server'
-    },
-    {
       url: 'https://rickandmorty-w440.onrender.com',
       description: 'Production server'
     }

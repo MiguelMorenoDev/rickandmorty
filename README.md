@@ -48,6 +48,9 @@ npm run dev
 - 🌍 **Locations**: `/api/locations`
 - 👤 **Users**: `/api/users` (protected)
 
+## Live Demo 🌐
+
+**[Live Demo](https://rickandmorty-w440.onrender.com)**
 
 ## Tech Stack 🛠️
 

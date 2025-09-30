@@ -8,7 +8,7 @@ A Node.js API replicating the [Rick and Morty API](https://rickandmortyapi.com) 
 - **JWT Authentication** with protected routes
 - **MongoDB** with seeded Rick and Morty data
 - **Swagger Documentation** at `/api/docs`
-- **Railway Ready** for deployment
+- **Render Ready** for deployment
 
 ## Quick Start 🚀
 

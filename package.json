@@ -1,0 +1,95 @@
+{
+  
+  "dependencies": {
+  
+    
+  "bcryptjs": "^3.0.2",
+  
+    
+  "dotenv": "^17.2.0",
+  
+    
+  "env-var": "^7.5.0",
+  
+    
+  "express": "^5.1.0",
+  
+    
+  "git": "^0.1.5",
+  
+    
+  "jsonwebtoken": "^9.0.2",
+  
+    
+  "mongoose": "^8.16.3",
+  
+    
+  "swagger-jsdoc": "^6.2.8",
+  
+    
+  "swagger-ui-express": "^5.0.1"
+  
+  },
+  
+  "devDependencies": {
+  
+    
+  "@types/express": "^5.0.3",
+  
+    
+  "@types/jsonwebtoken": "^9.0.10",
+  
+    
+  "@types/mongoose": "^5.11.96",
+  
+    
+  "@types/node": "^24.0.13",
+  
+    
+  "@types/swagger-jsdoc": "^6.0.4",
+  
+    
+  "@types/swagger-ui-express": "^4.1.8",
+  
+    
+  "rimraf": "^6.0.1",
+  
+    
+  "ts-node": "^10.9.2",
+  
+    
+  "ts-node-dev": "^2.0.0",
+  
+    
+  "typescript": "^5.8.3"
+  
+  },
+  
+  "scripts": {
+  
+    
+  "dev": "tsnd --respawn --clear src/app.ts",
+  
+    
+  "build": "rm -rf ./dist && tsc",
+  
+    
+  "start": "node dist/app.js",
+  
+    
+  "dataseed": "ts-node src/seeds/dataSeed.ts",
+  
+    
+  "characterdataseed": "ts-node src/seeds/charactersDataSeed.ts",
+  
+    
+  "episodedataseed": "ts-node src/seeds/episodesDataSeed.ts",
+  
+    
+  "locationdataseed": "ts-node src/seeds/locationsDataSeed.ts",
+  
+    
+  "seedall": "npm run characterdataseed && npm run locationdataseed && npm run episodedataseed"
+  
+  }
+}

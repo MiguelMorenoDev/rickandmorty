@@ -1,0 +1,377 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Episodes API",
+        "description": "API for managing Rick and Morty episodes.",
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "name": "Episodes",
+            "description": "All episode-related endpoints."
+        }
+    ],
+    "paths": {
+        "/api/episodes": {
+            "get": {
+                "summary": "Retrieves a list of episodes with optional filters.",
+                "tags": [
+                    "Episodes"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Filter episodes by name."
+                    },
+                    {
+                        "in": "query",
+                        "name": "episodeCode",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Filter episodes by episode code (e.g., 'S01E01')."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response with a list of episodes.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Episode"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates a new episode.",
+                "tags": [
+                    "Episodes"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewEpisode"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Episode created successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Episode"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/episodes/{id}": {
+            "get": {
+                "summary": "Retrieves a single episode by ID.",
+                "tags": [
+                    "Episodes"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "required": true,
+                        "description": "The unique ID of the episode."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The episode was found successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Episode"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Episode not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Updates an existing episode.",
+                "tags": [
+                    "Episodes"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "required": true,
+                        "description": "The ID of the episode to update."
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewEpisode"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Episode updated successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Episode"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Episode not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletes an episode.",
+                "tags": [
+                    "Episodes"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "required": true,
+                        "description": "The ID of the episode to delete."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Episode deleted successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Episode deleted successfully"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Episode not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Episode": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "The episode's unique ID."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The episode's name."
+                    },
+                    "air_date": {
+                        "type": "string",
+                        "description": "The original air date of the episode."
+                    },
+                    "episodeCode": {
+                        "type": "string",
+                        "description": "The code of the episode (e.g., 'S01E01')."
+                    },
+                    "characters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of character URLs that appeared in the episode."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The episode's URL."
+                    },
+                    "created": {
+                        "type": "string",
+                        "description": "Creation date of the episode record."
+                    }
+                }
+            },
+            "NewEpisode": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "air_date",
+                    "episodeCode"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "The episode's unique ID."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The episode's name."
+                    },
+                    "air_date": {
+                        "type": "string",
+                        "description": "The original air date of the episode."
+                    },
+                    "episodeCode": {
+                        "type": "string",
+                        "description": "The code of the episode (e.g., 'S01E01')."
+                    },
+                    "characters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of character URLs that appeared in the episode."
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "description": "A brief error message."
+                    },
+                    "details": {
+                        "type": "string",
+                        "description": "More detailed information about the error."
+                    }
+                }
+            }
+        }
+    }
+}

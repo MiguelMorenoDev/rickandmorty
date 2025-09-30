@@ -1,0 +1,237 @@
+{
+    "components": {
+        "schemas": {
+            "LoginRequest": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "User email address",
+                        "example": "rick@example.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "format": "password",
+                        "description": "User password",
+                        "example": "password123"
+                    }
+                }
+            },
+            "LoginResponse": {
+                "type": "object",
+                "required": ["token"],
+                "properties": {
+                    "token": {
+                        "type": "string",
+                        "description": "JWT authentication token",
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJyaWNrQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2MzQ1NjQ3ODksImV4cCI6MTYzNDU2ODM4OX0.abc123"
+                    }
+                }
+            },
+            "VerifyTokenResponse": {
+                "type": "object",
+                "required": ["success", "message"],
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "description": "Indicates if the token verification was successful",
+                        "example": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Response message",
+                        "example": "Token is valid"
+                    },
+                    "user": {
+                        "type": "object",
+                        "description": "User information (only included when token is valid)",
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "description": "User ID",
+                                "example": 1
+                            },
+                            "email": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "User email",
+                                "example": "rick@example.com"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "User name",
+                                "example": "Rick Sanchez"
+                            },
+                            "role": {
+                                "type": "string",
+                                "description": "User role",
+                                "example": "user"
+                            }
+                        }
+                    }
+                }
+            },
+            "AuthErrorResponse": {
+                "type": "object",
+                "required": ["error"],
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "description": "Error message",
+                        "example": "Invalid email or password"
+                    }
+                }
+            },
+            "TokenErrorResponse": {
+                "type": "object",
+                "required": ["success", "message"],
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "description": "Always false for error responses",
+                        "example": false
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Error message",
+                        "example": "Invalid or expired token"
+                    }
+                }
+            }
+        }
+    },
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": ["Authentication"],
+                "summary": "User login",
+                "description": "Authenticate user with email and password to receive JWT token",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid credentials - User not found or invalid password",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthErrorResponse"
+                                },
+                                "examples": {
+                                    "userNotFound": {
+                                        "summary": "User not found",
+                                        "value": {
+                                            "error": "User not found"
+                                        }
+                                    },
+                                    "invalidPassword": {
+                                        "summary": "Invalid password",
+                                        "value": {
+                                            "error": "Invalid password"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthErrorResponse"
+                                },
+                                "example": {
+                                    "error": "Server error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/verify": {
+            "get": {
+                "tags": ["Authentication"],
+                "summary": "Verify JWT token",
+                "description": "Verify if the provided JWT token is valid and return user information",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Token is valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VerifyTokenResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid or expired token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenErrorResponse"
+                                },
+                                "examples": {
+                                    "invalidToken": {
+                                        "summary": "Invalid or expired token",
+                                        "value": {
+                                            "success": false,
+                                            "message": "Invalid or expired token"
+                                        }
+                                    },
+                                    "userNotFound": {
+                                        "summary": "User not found",
+                                        "value": {
+                                            "success": false,
+                                            "message": "User not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No token provided",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenErrorResponse"
+                                },
+                                "example": {
+                                    "success": false,
+                                    "message": "No token provided"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

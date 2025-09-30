@@ -1,0 +1,498 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Characters API",
+    "description": "API for managing Rick and Morty characters.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Characters",
+      "description": "All character-related endpoints."
+    }
+  ],
+  "paths": {
+    "/api/characters": {
+      "get": {
+        "summary": "Retrieves a list of characters with optional filters.",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter characters by name."
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Alive",
+                "Dead",
+                "unknown"
+              ]
+            },
+            "description": "Filter characters by status."
+          },
+          {
+            "in": "query",
+            "name": "species",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter characters by species."
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter characters by type."
+          },
+          {
+            "in": "query",
+            "name": "gender",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Male",
+                "Female",
+                "Genderless",
+                "unknown"
+              ]
+            },
+            "description": "Filter characters by gender."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response with a list of characters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a new character.",
+        "tags": [
+          "Characters"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCharacter"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Character created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/characters/{id}": {
+      "get": {
+        "summary": "Retrieves a single character by ID.",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "The unique ID of the character."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The character was found successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Character not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates an existing character.",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "The ID of the character to update."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCharacter"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Character updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Character not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a character.",
+        "tags": [
+          "Characters"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "The ID of the character to delete."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Character deleted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Character deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Character not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Character": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The character's unique ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "The character's name."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Alive",
+              "Dead",
+              "unknown"
+            ],
+            "description": "The character's status."
+          },
+          "species": {
+            "type": "string",
+            "description": "The character's species."
+          },
+          "type": {
+            "type": "string",
+            "description": "The character's type."
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "Male",
+              "Female",
+              "Genderless",
+              "unknown"
+            ],
+            "description": "The character's gender."
+          },
+          "origin": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "image": {
+            "type": "string",
+            "description": "URL to the character's image."
+          },
+          "episode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of episode URLs the character appeared in."
+          },
+          "url": {
+            "type": "string",
+            "description": "The character's URL."
+          },
+          "created": {
+            "type": "string",
+            "description": "Creation date of the character record."
+          }
+        }
+      },
+      "NewCharacter": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "species",
+          "gender"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The character's unique ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "The character's name."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Alive",
+              "Dead",
+              "unknown"
+            ],
+            "description": "The character's status."
+          },
+          "species": {
+            "type": "string",
+            "description": "The character's species."
+          },
+          "type": {
+            "type": "string",
+            "description": "The character's type."
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "Male",
+              "Female",
+              "Genderless",
+              "unknown"
+            ],
+            "description": "The character's gender."
+          },
+          "origin": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "image": {
+            "type": "string",
+            "description": "URL to the character's image."
+          },
+          "episode": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of episode URLs the character appeared in."
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "A brief error message."
+          },
+          "details": {
+            "type": "string",
+            "description": "More detailed information about the error."
+          }
+        }
+      }
+    }
+  }
+}

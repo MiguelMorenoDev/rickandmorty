@@ -34,7 +34,7 @@ const swaggerDocument = {
       description: 'Development server'
     },
     {
-      url: 'https://your-domain.com',
+      url: 'https://rickandmorty-w440.onrender.com',
       description: 'Production server'
     }
   ],

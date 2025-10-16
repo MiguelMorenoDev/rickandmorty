@@ -25,8 +25,8 @@ const swaggerDocument = {
     version: '1.0.0',
     description: 'A Rick and Morty API clone with authentication',
     contact: {
-      name: 'API Support',
-      email: 'support@rickandmortyapi.com'
+      name: 'Miguel',
+      email: 'miguelangelmorenofp@gmail.com'
     },
   },
   servers: [

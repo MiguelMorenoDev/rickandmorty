@@ -10,7 +10,8 @@ const { JWT_SECRET, JWT_EXPIRES_IN } = envs;
 
 export const login = async (
     req: Request<{},{},LoginBody,{}>,
-    res: Response<LoginResponse | IErrorResponse>) => {
+    res: Response<LoginResponse | IErrorResponse>
+) => {
     try {
         const { email, password } = req.body;
         

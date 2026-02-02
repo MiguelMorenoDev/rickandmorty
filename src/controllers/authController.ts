@@ -37,6 +37,54 @@ export const login = async (
     }
 }
 
+export const register = async (
+    req: Request,
+    res: Response
+) => {
+    try {
+        const { name, email, password } = req.body;
+
+        //Check if user already exists
+        const existingUser = await UserModel.findOne({ email });
+
+        if (existingUser) {
+            return res.status(400).json({ error: "Email already exists"});
+        }
+
+        //Hash password
+        const hashedPassword = bcrypt.hashSync(password, 10);
+
+        //Create user
+        const user = await UserModel.create({
+            name,
+            email,
+            password: hashedPassword,
+            role: 'user'
+        });
+
+        //Generate JWT
+        const token = jwt.sign(
+            { id: user.id, email: user.email, role: user.role },
+            JWT_SECRET,
+            { expiresIn: JWT_EXPIRES_IN as jwt.SignOptions['expiresIn'] }
+        );
+
+        return res.status(201).json({
+            token,
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
+        
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal server error'});
+    }
+}
+
 export const verifyToken = async (
     req: Request,
     res: Response

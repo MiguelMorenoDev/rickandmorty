@@ -5,7 +5,7 @@ export interface IUserModel extends Document {
     name: string,
     email: string,
     password: string,
-    role?: string;
+    role?: 'user' | 'admin' | 'moderator';
     createdAt?: Date;
     updatedAt?: Date;
 }

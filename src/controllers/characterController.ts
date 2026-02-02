@@ -10,9 +10,19 @@ export const createCharacter = async (
     req: Request<{},{},ICharacter,{}>,
     res: Response <ICharacter | IErrorResponse> ) => {
     try {
-        const newCharacter = await CharacterModel.create(req.body);
+        
+        //Gererate id
+        const lastChar = await CharacterModel.findOne().sort('-id');
+        const newId = lastChar ? lastChar.id + 1 : 1;
+
+        const newCharacter = await CharacterModel.create({
+            ...req.body,
+            id: newId
+        });
         res.status(201).json( newCharacter );
     } catch (error: any) {
+
+        //Implemented to use it with validations coming soon
         if (error.name === 'ValidationError') {
             return res.status(400).json({
                 error: 'Invalid input data',

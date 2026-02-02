@@ -2,7 +2,6 @@ import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IAuthModel extends Document {
-  id: number;
   name: string;
   email: string;
   password: string;
@@ -13,11 +12,7 @@ export interface IAuthModel extends Document {
 }
 
 const authSchema = new Schema({
-  id: { 
-    type: Number, 
-    required: true, 
-    unique: true 
-  },
+
   name: { 
     type: String, 
     required: true,

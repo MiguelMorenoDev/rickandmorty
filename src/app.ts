@@ -80,6 +80,7 @@ async function main() {
       mongoUrl: envs.MONGO_URL,
     });
     console.log(`MongoDB connected at ${envs.MONGO_URL}`);
+
   } catch (error) {
     console.log('MongoDB connection error');
     console.log(error);

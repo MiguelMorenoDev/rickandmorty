@@ -3,7 +3,12 @@ import {Schema, model } from 'mongoose';
 import { ICharacter } from '../../../interfaces/character.interface';
 
 const characterSchema = new Schema<ICharacter>({
-    id: { type: Number, required: true, unique: true },
+    id: { 
+        type: Number, 
+        required: false,
+        unique: true,
+         default: undefined
+    },
     name: { type: String, required: true },
     status: { type: String, enum: ['Alive', 'Dead', 'unknown'],required: true },
     species: { type: String, required: true },
